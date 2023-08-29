@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { booksApi } from "../apis/booksApi";
+import { Route, Routes } from "react-router-dom";
+import { Main } from "../pages/Main";
+import SearchPage from "../pages/Search";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -15,8 +17,12 @@ function App() {
 
 	return (
 		<div>
-			<NavLink to={"/main"}>Click here</NavLink>
-			<Outlet context={{ booksData: books }}>Hi there</Outlet>
+			<Routes>
+				<Route Component={Main} path="/" />
+				<Route path="/main" element={<Main />} />
+				<Route path="/search" element={<SearchPage />} />
+				<Route path="/*" element={<div>Not foiund</div>} />
+			</Routes>
 		</div>
 	);
 }

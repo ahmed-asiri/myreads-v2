@@ -7,7 +7,6 @@ function manageAuthToken() {
 		const idToken = Math.random() * 1000;
 		localStorage.setItem("myreads-api-token", idToken);
 	}
-
 	apiToken = localStorage.getItem("myreads-api-token");
 
 	return apiToken;
@@ -15,7 +14,7 @@ function manageAuthToken() {
 
 export const booksApi = axios.create({
 	baseURL: "https://reactnd-books-api.udacity.com",
-	timeout: 1000,
+	timeout: 5000,
 	headers: {
 		Authorization: manageAuthToken(),
 	},
