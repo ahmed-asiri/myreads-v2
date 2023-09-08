@@ -3,6 +3,7 @@ import { booksApi } from "../apis/booksApi";
 import { Route, Routes } from "react-router-dom";
 import { Main } from "../pages/Main";
 import SearchPage from "../pages/Search";
+import NotFound from "../pages/NotFound";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -21,7 +22,7 @@ function App() {
 				<Route Component={Main} path="/" />
 				<Route path="/main" element={<Main />} />
 				<Route path="/search" element={<SearchPage />} />
-				<Route path="/*" element={<div>Not foiund</div>} />
+				<Route path="/*" element={<NotFound />} />
 			</Routes>
 		</div>
 	);
