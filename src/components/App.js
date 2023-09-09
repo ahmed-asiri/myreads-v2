@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import { Main } from "../pages/Main";
 import SearchPage from "../pages/Search";
 import NotFound from "../pages/NotFound";
+import { Nav } from "./Nav";
+import { Layout } from "./Layout";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -17,14 +19,17 @@ function App() {
 	}, []);
 
 	return (
-		<div>
-			<Routes>
-				<Route Component={Main} path="/" />
-				<Route path="/main" element={<Main />} />
-				<Route path="/search" element={<SearchPage />} />
-				<Route path="/*" element={<NotFound />} />
-			</Routes>
-		</div>
+		<Layout>
+			<Nav />
+			<div style={{ flex: 1, backgroundColor: "red" }}>
+				<Routes>
+					<Route Component={Main} path="/" />
+					<Route path="/main" element={<Main />} />
+					<Route path="/search" element={<SearchPage />} />
+					<Route path="/*" element={<NotFound />} />
+				</Routes>
+			</div>
+		</Layout>
 	);
 }
 
