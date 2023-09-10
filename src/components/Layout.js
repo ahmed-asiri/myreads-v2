@@ -2,15 +2,7 @@ import PropTypes from "prop-types";
 
 export const Layout = ({ children }) => {
 	return (
-		<div
-			style={{
-				display: "flex",
-				flexDirection: "row",
-				height: "100vh",
-				maxWidth: "1600px",
-				width: "100%",
-				margin: "0 auto",
-			}}>
+		<div className="flex flex-row h-screen max-w-screen-xl w-full mx-auto">
 			{children}
 		</div>
 	);
