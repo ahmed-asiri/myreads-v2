@@ -21,9 +21,9 @@ function App() {
 	return (
 		<Layout>
 			<Nav />
-			<div className="flex-1 bg-red-100">
+			<div className="flex-1">
 				<Routes>
-					<Route Component={Main} path="/" />
+					<Route path="/" element={<Main />} />
 					<Route path="/main" element={<Main />} />
 					<Route path="/search" element={<SearchPage />} />
 					<Route path="/*" element={<NotFound />} />
