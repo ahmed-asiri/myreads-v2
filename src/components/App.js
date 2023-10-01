@@ -11,12 +11,13 @@ function App() {
 	const [books, setBooks] = useState([]);
 
 	useEffect(() => {
-		const setBooksFromApi = async () => {
-			const result = (await booksApi.get("/books")).data;
-			setBooks(result);
-		};
-		setBooksFromApi();
+		fetchBooksHandler();
 	}, []);
+
+	const fetchBooksHandler = async (query) => {
+		const result = (await booksApi.get("/books")).data;
+		setBooks(result.books);
+	};
 
 	return (
 		<Layout>
