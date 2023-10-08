@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx commitlint --edit "" # Check for commit message format via commitlint
