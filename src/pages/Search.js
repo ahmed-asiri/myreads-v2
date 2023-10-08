@@ -3,12 +3,13 @@ import Input from "../components/Input";
 import { booksApi } from "../apis/booksApi";
 import SearchIcon from "../components/SearchIcon";
 import BookCard from "../components/BookCard";
+import Divider from "../components/Divider";
+import SearchPointer from "../components/SearchPointer";
 
 const SearchPage = () => {
 	const [query, setQuery] = useState("");
 	const [books, setBooks] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	const [isDirty, setIsDirty] = useState(false);
 
 	useEffect(() => {
 		if (query) {
@@ -17,6 +18,8 @@ const SearchPage = () => {
 			return () => {
 				clearTimeout(intervalId);
 			};
+		} else {
+			setBooks([]);
 		}
 	}, [query]);
 
@@ -38,16 +41,17 @@ const SearchPage = () => {
 	};
 
 	return (
-		<div className="p-10 relative h-full flex flex-col">
+		<div className="relative h-full flex flex-col">
 			<Input value={query} onChange={(e) => setQuery(e.target.value)} />
-			<div className="bg-gray-100 h-1 my-5" />
-			<div className="relative flex-1 overflow-y-scroll">
+			<Divider />
+			{!query && <SearchPointer />}
+			<div className="relative flex-1 overflow-y-scroll ">
 				{isLoading ? (
-					<div className="absolute top-1/4 left-1/2 translate-x-1/2 -translate-y-1/2">
+					<div className="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
 						<SearchIcon />
 					</div>
 				) : null}
-				<div className="flex flex-wrap flex-row gap-16 justify-start">
+				<div className="flex flex-wrap flex-row gap-8 justify-start ">
 					{books.map((book) => (
 						<BookCard key={book.id} book={book} />
 					))}

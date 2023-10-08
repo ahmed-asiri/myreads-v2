@@ -4,7 +4,8 @@ const BookCard = ({ book }) => {
 	return (
 		<div
 			key={book.id}
-			className="flex flex-col gap-3 w-1/5 border rounded-md p-5 ">
+			className="flex flex-col gap-3 border rounded-md p-5"
+			style={{ width: "23.43%" }}>
 			<div className="image">
 				<img
 					className="w-full h-80"
