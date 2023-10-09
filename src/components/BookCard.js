@@ -13,7 +13,7 @@ const BookCard = ({ book }) => {
 					alt={book.title}
 				/>
 			</div>
-			<div className="z-1 w-1/2 flex flex-col justify-between">
+			<div className=" w-1/2 flex flex-col justify-between">
 				<div>
 					<p className="text-[1.4rem] text-ellipsis line-clamp-2 mb-3">
 						{book.title}
