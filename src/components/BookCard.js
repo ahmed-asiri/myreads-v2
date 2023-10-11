@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
+import Dropdown from "./DropDown";
+import { useState } from "react";
 
 const BookCard = ({ book }) => {
+	const [state, setState] = useState(book.shelf);
 	return (
 		<div
 			key={book.id}
 			className="relative flex flex-row bg-white gap-3 p-5 border rounded-md shadow-md"
 			style={{ width: "31%" }}>
-			<div className="image flex-auto w-1/2 border shadow">
+			<div
+				className="image flex-auto w-1/2 border shadow"
+				style={{
+					height: "17rem",
+					width: "8rem",
+				}}>
 				<img
 					className="h-full w-full"
 					src={book.imageLinks.thumbnail}
@@ -23,16 +31,33 @@ const BookCard = ({ book }) => {
 							"By " + book.authors.join(", ")}
 					</p>
 				</div>
-				{/* <p className="text-clip text-[1.2rem] opacity-60 overflow-hidden line-clamp-5 w-full">
-					{book.description}
-				</p> */}
+				<Dropdown
+					placeholder={"Choose Category"}
+					options={BOOK_STATE_OPTIONS}
+					value={state}
+					onChange={(value) => {
+						// TODO: call API to change state
+						setState(value);
+					}}
+				/>
 			</div>
 		</div>
 	);
 };
 
-BookCard.PropTypes = {
-	book: PropTypes.object.iaRequired,
+const BOOK_STATE_OPTIONS = [
+	{
+		label: "Currently Reading",
+		value: "currentlyReading",
+	},
+	{
+		label: "Want to read",
+		value: "wantToRead",
+	},
+];
+
+BookCard.propTypes = {
+	book: PropTypes.object.isRequired,
 };
 
 export default BookCard;
