@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { UisAngleDown } from "@iconscout/react-unicons-solid";
 
-const Dropdown = ({ placeholder, value, options, onChange }) => {
+const Dropdown = ({ placeholder, value, options, onChange, disabled }) => {
 	const [toggler, setToggler] = useState(false);
 	const ref = useRef(null);
 	const onOptionClick = (value) => {
@@ -20,8 +20,11 @@ const Dropdown = ({ placeholder, value, options, onChange }) => {
 	return (
 		<div className="relative" ref={ref}>
 			<button
-				onClick={() => setToggler(!toggler)}
-				className="bg-white text-gray-600 flex flex-row align-middle  justify-between px-2 py-1 w-full text-xl rounded-md border-gray-200 border-2">
+				onClick={() => (!disabled ? setToggler(!toggler) : setToggler(false))}
+				className={`text-gray-600 flex flex-row 
+                align-middle  justify-between px-2 py-1 
+                w-full text-xl rounded-md border-gray-200 border-2
+                ${disabled ? "bg-gray-300" : "bg-white"}`}>
 				<p className="text-[1.2rem] self-center">
 					{value
 						? options.find((option) => option.value === value).label

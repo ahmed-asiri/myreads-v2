@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Input from "../components/Input";
 import { booksApi } from "../apis/booksApi";
 import SearchIcon from "../components/SearchIcon";
-import BookCard from "../components/BookCard";
 import Divider from "../components/Divider";
 import SearchPointer from "../components/SearchPointer";
+import BooksList from "../components/BooksList";
 
 const SearchPage = () => {
 	const [query, setQuery] = useState("");
@@ -51,11 +51,7 @@ const SearchPage = () => {
 						<SearchIcon />
 					</div>
 				) : null}
-				<div className="flex flex-wrap flex-row gap-8 justify-start ">
-					{books.map((book) => (
-						<BookCard key={book.id} book={book} />
-					))}
-				</div>
+				<BooksList books={books} />
 			</div>
 		</div>
 	);

@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import Dropdown from "./DropDown";
 import { useState } from "react";
+import { booksApi } from "../apis/booksApi";
 
-const BookCard = ({ book }) => {
+const BookCard = ({ book, onBookStatusChanged }) => {
 	const [state, setState] = useState(book.shelf);
+	const [isLoading, setisLoading] = useState(false);
 	return (
 		<div
 			key={book.id}
@@ -35,9 +37,17 @@ const BookCard = ({ book }) => {
 					placeholder={"Choose Category"}
 					options={BOOK_STATE_OPTIONS}
 					value={state}
-					onChange={(value) => {
-						// TODO: call API to change state
-						setState(value);
+					disabled={isLoading}
+					onChange={async (value) => {
+						if (value !== state) {
+							setisLoading(true);
+							await booksApi.put(`/books/${book.id}`, {
+								shelf: value,
+							});
+							if (onBookStatusChanged) onBookStatusChanged(book.id, value);
+							setisLoading(false);
+							setState(value);
+						}
 					}}
 				/>
 			</div>
@@ -53,6 +63,10 @@ const BOOK_STATE_OPTIONS = [
 	{
 		label: "Want to read",
 		value: "wantToRead",
+	},
+	{
+		label: "Read",
+		value: "read",
 	},
 ];
 
