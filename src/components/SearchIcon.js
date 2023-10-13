@@ -5,12 +5,10 @@ const SearchIcon = () => {
 		<Player
 			autoplay
 			loop
-			src="https://cdn.lordicon.com/wxnxiano.json"
+			src="https://lottie.host/d2d493c7-2b89-4feb-91bd-07dff2bc988e/aS1zt0WGW2.json"
 			style={{
-				color: "#3080e8",
-				accentColor: "#121331",
-				height: "70px",
-				width: "70px",
+				height: "100px",
+				width: "100px",
 			}}></Player>
 	);
 };

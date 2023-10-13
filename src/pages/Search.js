@@ -15,9 +15,9 @@ const SearchPage = ({ shelfBooks, onBookStatusChanged }) => {
 	useEffect(() => {
 		if (query) {
 			setIsLoading(true);
-			const intervalId = setTimeout(() => booksHandler(), 2000);
+			const timeOutId = setTimeout(() => booksHandler(), 2000);
 			return () => {
-				clearTimeout(intervalId);
+				clearTimeout(timeOutId);
 			};
 		} else {
 			setBooks([]);
@@ -53,14 +53,17 @@ const SearchPage = ({ shelfBooks, onBookStatusChanged }) => {
 			<Input value={query} onChange={(e) => setQuery(e.target.value)} />
 			<Divider />
 			{!query && <SearchPointer />}
-			{!isLoading && query && <NotFound title={"No Book Found"} />}
+			{!isLoading && query && !books.length && (
+				<NotFound title={"No Book Found"} />
+			)}
 			<div className="relative flex-1 overflow-y-scroll ">
 				{isLoading ? (
 					<div className="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
 						<SearchIcon />
 					</div>
-				) : null}
-				<BooksList onBookStatusChanged={onBookStatusChanged} books={books} />
+				) : (
+					<BooksList onBookStatusChanged={onBookStatusChanged} books={books} />
+				)}
 			</div>
 		</div>
 	);
