@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@iconscout/react-unicons": "^2.0.2",
 		"@iconscout/react-unicons-solid": "^1.0.2",
 		"@iconscout/unicons": "^4.0.8",
 		"@lottiefiles/react-lottie-player": "^3.5.3",

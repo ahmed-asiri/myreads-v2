@@ -6,6 +6,7 @@ import { Nav } from "./Nav";
 import { Layout } from "./Layout";
 import { useEffect, useState } from "react";
 import { booksApi } from "../apis/booksApi";
+import { UilNinja } from "@iconscout/react-unicons";
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -60,7 +61,15 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/*" element={<NotFound />} />
+					<Route
+						path="/*"
+						element={
+							<NotFound
+								title={"Not Found Page"}
+								icon={<UilNinja size="100" color="#A0A4AC" />}
+							/>
+						}
+					/>
 				</Routes>
 			</div>
 		</Layout>

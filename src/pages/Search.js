@@ -5,6 +5,7 @@ import SearchIcon from "../components/SearchIcon";
 import Divider from "../components/Divider";
 import SearchPointer from "../components/SearchPointer";
 import BooksList from "../components/BooksList";
+import NotFound from "./NotFound";
 
 const SearchPage = ({ shelfBooks, onBookStatusChanged }) => {
 	const [query, setQuery] = useState("");
@@ -52,6 +53,7 @@ const SearchPage = ({ shelfBooks, onBookStatusChanged }) => {
 			<Input value={query} onChange={(e) => setQuery(e.target.value)} />
 			<Divider />
 			{!query && <SearchPointer />}
+			{!isLoading && query && <NotFound title={"No Book Found"} />}
 			<div className="relative flex-1 overflow-y-scroll ">
 				{isLoading ? (
 					<div className="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
