@@ -1,31 +1,6 @@
-import { useEffect, useState } from "react";
-import { booksApi } from "../apis/booksApi";
 import BooksList from "../components/BooksList";
 
-export const Main = () => {
-	const [books, setBooks] = useState([]);
-
-	useEffect(() => {
-		const getBooks = async () => {
-			const res = await booksApi.get("/books", {
-				params: {
-					maxResults: 100,
-				},
-			});
-			setBooks(res.data.books);
-		};
-		getBooks();
-	}, []);
-
-	const onBookStatusChanged = (bookId, status) => {
-		const tempBooks = [...books];
-		const book = tempBooks.find((book) => book.id === bookId);
-		if (book) {
-			book.shelf = status;
-			setBooks([...tempBooks]);
-		}
-	};
-
+export const Main = ({ onBookStatusChanged, books }) => {
 	const currentlyReadingList = books.filter(
 		(book) => book.shelf === "currentlyReading"
 	);

@@ -44,7 +44,7 @@ const BookCard = ({ book, onBookStatusChanged }) => {
 							await booksApi.put(`/books/${book.id}`, {
 								shelf: value,
 							});
-							if (onBookStatusChanged) onBookStatusChanged(book.id, value);
+							if (onBookStatusChanged) onBookStatusChanged(book, value);
 							setisLoading(false);
 							setState(value);
 						}

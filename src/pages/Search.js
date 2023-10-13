@@ -6,7 +6,7 @@ import Divider from "../components/Divider";
 import SearchPointer from "../components/SearchPointer";
 import BooksList from "../components/BooksList";
 
-const SearchPage = () => {
+const SearchPage = ({ shelfBooks, onBookStatusChanged }) => {
 	const [query, setQuery] = useState("");
 	const [books, setBooks] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +33,14 @@ const SearchPage = () => {
 
 		// response error/empty handling
 		if (!result.books.error) {
-			setBooks(result.books);
+			const mappedBooks = result.books.map((book) => {
+				// find the book from shelf
+				const onShelfBook = shelfBooks.find(
+					(shelfBook) => book.id === shelfBook.id
+				);
+				return onShelfBook ? { ...onShelfBook } : book;
+			});
+			setBooks(mappedBooks);
 		} else {
 			setBooks([]);
 		}
@@ -51,7 +58,7 @@ const SearchPage = () => {
 						<SearchIcon />
 					</div>
 				) : null}
-				<BooksList books={books} />
+				<BooksList onBookStatusChanged={onBookStatusChanged} books={books} />
 			</div>
 		</div>
 	);
