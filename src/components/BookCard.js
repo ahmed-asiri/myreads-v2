@@ -17,11 +17,17 @@ const BookCard = ({ book, onBookStatusChanged }) => {
 					height: "17rem",
 					width: "8rem",
 				}}>
-				<img
-					className="h-full w-full"
-					src={book.imageLinks.thumbnail}
-					alt={book.title}
-				/>
+				{book.imageLinks && book.imageLinks.thumbnail ? (
+					<img
+						className="h-full w-full"
+						src={book.imageLinks.thumbnail}
+						alt={book.title}
+					/>
+				) : (
+					<div className="h-full grid place-content-center p-5 text-center text-gray-500 bg-gray-300">
+						Placeholder Cover
+					</div>
+				)}
 			</div>
 			<div className=" w-1/2 flex flex-col justify-between">
 				<div>
