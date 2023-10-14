@@ -4,7 +4,7 @@ import { useState } from "react";
 import { booksApi } from "../apis/booksApi";
 
 const BookCard = ({ book, onBookStatusChanged }) => {
-	const [state, setState] = useState(book.shelf);
+	const [state, setState] = useState(book.shelf ? book.shelf : "none");
 	const [isLoading, setisLoading] = useState(false);
 	return (
 		<div

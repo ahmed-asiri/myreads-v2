@@ -2,17 +2,20 @@
 
 This project is running the scope of your choosing books to read and schedule them for future reading. This project inspired by Udacity React nanodegree program.
 
+## Running the Project locally
+
+First of all, try cloning the project from Github: `git clone https://github.com/ahmed-asiri/myreads-v2.git`
+
+To run the project in your enviroment, you can follow:
+
+1. `npm install`: To install all project dependencies.
+2. `npm start`: To run the project locally.
+
+Check more available scripts in next section.
+
 ## Available Scripts To run the project
 
 In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm run build`
 
