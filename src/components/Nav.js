@@ -8,7 +8,7 @@ export const Nav = () => {
 				ReadMore
 			</h1>
 			<ul className="list-none px-2 flex flex-col gap-0">
-				<NavItem title="Home" to="/main" />
+				<NavItem title="Home" to="/" />
 				<Divider />
 				<NavItem title="Search" to="/search" />
 			</ul>

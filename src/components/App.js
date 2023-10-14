@@ -47,12 +47,6 @@ function App() {
 						}
 					/>
 					<Route
-						path="/main"
-						element={
-							<Main books={books} onBookStatusChanged={onBookStatusChanged} />
-						}
-					/>
-					<Route
 						path="/search"
 						element={
 							<SearchPage
