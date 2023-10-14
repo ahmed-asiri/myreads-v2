@@ -68,6 +68,10 @@ const BOOK_STATE_OPTIONS = [
 		label: "Read",
 		value: "read",
 	},
+	{
+		label: "None",
+		value: "none",
+	},
 ];
 
 BookCard.propTypes = {
